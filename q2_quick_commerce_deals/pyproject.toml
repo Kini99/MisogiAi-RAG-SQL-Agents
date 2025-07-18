@@ -1,0 +1,107 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "price-comparison-platform"
+version = "0.1.0"
+description = "Real-time price comparison platform for quick commerce apps"
+authors = [
+    {name = "Price Comparison Team", email = "team@pricecomparison.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    # FastAPI and web framework
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    
+    # Database
+    "asyncpg>=0.29.0",
+    "sqlalchemy[asyncio]>=2.0.23",
+    "alembic>=1.13.0",
+    "psycopg2-binary>=2.9.9",
+    
+    # LangChain and AI
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.10",
+    "langchain-openai>=0.0.5",
+    "chromadb>=0.4.18",
+    "sentence-transformers>=2.2.2",
+    
+    # Caching and task queue
+    "redis>=5.0.1",
+    "celery>=5.3.4",
+    "flower>=2.0.1",
+    
+    # Security and rate limiting
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.6",
+    "slowapi>=0.1.9",
+    
+    # Monitoring and logging
+    "prometheus-client>=0.19.0",
+    "structlog>=23.2.0",
+    "rich>=13.7.0",
+    
+    # Data processing
+    "pandas>=2.1.4",
+    "numpy>=1.25.2",
+    "faker>=20.1.0",
+    
+    # HTTP client
+    "httpx>=0.25.2",
+    "aiohttp>=3.9.1",
+    
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "click>=8.1.7",
+    "pydantic-extra-types>=2.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=4.1.0",
+    "black>=23.11.0",
+    "isort>=5.12.0",
+    "flake8>=6.1.0",
+    "mypy>=1.7.1",
+    "pre-commit>=3.6.0",
+]
+
+[project.scripts]
+price-comparison = "price_comparison.cli:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"] 
