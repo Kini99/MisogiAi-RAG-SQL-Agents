@@ -1,0 +1,24 @@
+# Database Configuration
+DATABASE_URL=postgresql://username:password@localhost:5432/ecommerce_support
+
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4
+OPENAI_TEMPERATURE=0.1
+
+# RAG System Configuration
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+VECTOR_DB_PATH=./data/vector_db
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
+
+# Performance Settings
+MAX_TOKENS=4000
+REQUEST_TIMEOUT=30
+
+# Logging
+LOG_LEVEL=INFO
+
+# Demo Application
+DEMO_PORT=8000
+DEMO_HOST=0.0.0.0 
